@@ -1,6 +1,6 @@
-import Svg from './Svg'
+import { Svg } from './Svg'
 
-const Row = ({ data, ...restProps}) => {
+const Row = ({ data, ...restProps }) => {
   const { icon, title, description } = data;
   return (
     <div className="flex mb-6 last:mb-0" {...restProps}>

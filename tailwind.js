@@ -155,7 +155,10 @@ module.exports = {
       '56': '14rem',
       '64': '16rem',
     },
-    backgroundColor: theme => theme('colors'),
+    backgroundColor: theme => ({
+      ...theme('colors'),
+      'clubhouse-gray': '#1d1f38',
+    }),
     backgroundImage: {
       none: 'none',
       'gradient-to-t': 'linear-gradient(to top, var(--gradient-color-stops))',
@@ -419,7 +422,10 @@ module.exports = {
       '1': '1',
       '2': '2',
     },
-    textColor: theme => theme('colors'),
+    textColor: theme => ({
+      ...theme('colors'),
+      'clubhouse-gray': '#1d1f38',
+    }),
     textOpacity: theme => theme('opacity'),
     width: theme => ({
       auto: 'auto',

@@ -1,11 +1,11 @@
 import './App.css';
 import { Header } from './components'
-import { SampleCards, TodoApp } from './pages';
+import { Clubhouse, SampleCards, TodoApp } from './pages';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 const routesList = [
   { name: 'Sample Cards', route: '/sample-cards' },
-  { name: 'Todo App', route: '/todo-app' }
+  { name: 'Clubhouse', route: '/Clubhouse' }
 ];
 
 function App() {
@@ -19,8 +19,8 @@ function App() {
         <Route path="/sample-cards">
           <SampleCards />
         </Route>
-        <Route path="/todo-app">
-          <TodoApp />
+        <Route path="/Clubhouse">
+          <Clubhouse />
         </Route>
       </Switch>
     </Router>
