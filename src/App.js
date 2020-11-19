@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 const routesList = [
   { name: 'Sample Cards', route: '/sample-cards' },
-  { name: 'Clubhouse', route: '/Clubhouse' }
+  { name: 'Clubhouse', route: '/clubhouse' }
 ];
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <Route path="/sample-cards">
           <SampleCards />
         </Route>
-        <Route path="/Clubhouse">
+        <Route path="/clubhouse">
           <Clubhouse />
         </Route>
       </Switch>
