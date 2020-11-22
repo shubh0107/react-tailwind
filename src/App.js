@@ -4,8 +4,8 @@ import { Clubhouse, SampleCards, TodoApp } from './pages';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 const routesList = [
-  { name: 'Sample Cards', route: '/sample-cards' },
-  { name: 'Clubhouse', route: '/clubhouse' }
+  { name: 'Sample Cards', path: '/sample-cards', component: SampleCards },
+  { name: 'Clubhouse', path: '/clubhouse', component: Clubhouse }
 ];
 
 function App() {
@@ -17,15 +17,12 @@ function App() {
           <Route exact path="/" >
             <Redirect to="/sample-cards" />
           </Route>
-          <Route path="/sample-cards">
-            <SampleCards />
-          </Route>
-          <Route path="/clubhouse">
-            <Clubhouse />
-          </Route>
+          {routesList.map(({ path, component }) => {
+            return <Route path={path} component={component} />
+          })}
         </Switch>
       </div>
-    </Router>
+    </Router >
   )
 }
 
