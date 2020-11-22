@@ -6,7 +6,25 @@ import RetroShoe from './retro-shoe.jpg';
 
 const Clubhouse = props => {
 
-  const [currentStep, setCurrentStep] = useState(2);
+  const steps = [
+    {
+      id: 1,
+      title: 'Create your Organization',
+      subtitle: 'Your software team has a new home!'
+    },
+    {
+      id: 2,
+      title: 'Create your Profile',
+      subtitle: 'Fill out some quick details'
+    },
+    {
+      id: 3,
+      title: 'Tell us about yourself',
+      subtitle: 'Help tailor your Clubhouse experience'
+    }
+  ];
+
+  const [currentStep, setCurrentStep] = useState(1);
 
   const toggleStep = jump => {
     let newStep = currentStep + jump;
@@ -15,13 +33,10 @@ const Clubhouse = props => {
     }
   }
 
-
   return (
-    <div className="h-screen w-full bg-clubhouse-gray text-white flex flex-none">
-      <div className="w-1/3 flex flex-col px-6 py-3 items-start">
+    <div className="h-full w-full flex bg-clubhouse-gray text-white">
+      <div className="w-1/3 flex flex-col px-6 pt-3 pb-6 items-start">
         <header className="text-2xl font-mono">Clubhouse</header>
-        <Button onClick={e => toggleStep(-1)}>Prev</Button>
-        <Button onClick={e => toggleStep(1)}>Next</Button>
         <h1 className="text-xs mt-20 opacity-50">
           SET UP YOUR CLUBHOUSE ACCOUNT
         </h1>
@@ -32,11 +47,12 @@ const Clubhouse = props => {
           <AddUser />
           <span>Collaborate with your team</span>
         </div>
+        <StepControlButtons currentStep={currentStep} toggleStep={toggleStep} />
       </div>
       <div className="w-2/3 bg-white text-gray-600 px-4 py-4">
         <div className="flex items-center justify-end">
           <span className="mr-2">Already have an account?</span>
-          <Button>Sign In</Button>
+          <Button classes="text-gray-600 hover:text-white">Sign In</Button>
         </div>
         <div className="flex justify-center mt-48">
           {currentStep === 1 ? <Step1Form /> : ''}
@@ -47,8 +63,15 @@ const Clubhouse = props => {
   )
 }
 
-const Button = ({ children, ...restProps }) => <button type="button" className="px-3 py-1 border-2 rounded-md text-gray-800 hover:text-white hover:bg-clubhouse-gray cursor-pointer duration-200 transition-colors" {...restProps}>{children}</button>
+const Button = ({ children, classes, ...restProps }) => <button type="button" className={`px-3 py-1 border-2 rounded-md text-white hover:bg-clubhouse-gray cursor-pointer duration-200 transition-opacity focus:outline-none ${classes}`} {...restProps}>{children}</button>
 const NextStepButton = ({ children, classes, ...restProps }) => <Button className={`px-20 py-2 text-white bg-blue-600 rounded-md hover:b ${classes}`} style={{ background: '#0c4eb5' }} {...restProps}>{children}</Button>
+
+const StepControlButtons = ({currentStep, toggleStep}) => (
+  <div className="flex w-full justify-between mt-auto">
+    <Button onClick={e => toggleStep(-1)} classes={currentStep === 1 ? 'opacity-25' : ''}>Prev</Button>
+    <Button onClick={e => toggleStep(1)} classes={currentStep === 3 ? 'opacity-25' : ''}>Next</Button>
+  </div>
+)
 
 const Step = ({ step, currentStep, ...restProps }) => {
   const { id, title, subtitle } = step;
@@ -63,24 +86,6 @@ const Step = ({ step, currentStep, ...restProps }) => {
     </div>
   </div>
 }
-
-const steps = [
-  {
-    id: 1,
-    title: 'Create your Organization',
-    subtitle: 'Your software team has a new home!'
-  },
-  {
-    id: 2,
-    title: 'Create your Profile',
-    subtitle: 'Fill out some quick details'
-  },
-  {
-    id: 3,
-    title: 'Tell us about yourself',
-    subtitle: 'Help tailor your Clubhouse experience'
-  }
-];
 
 const Step1Form = props => {
   return (
@@ -97,35 +102,6 @@ const Step1Form = props => {
   )
 }
 
-// const Step2Form = props => {
-//   return (
-//     <div className="flex p-6 font-mono">
-//       <div className="flex-none w-40 relative">
-//         {/* <img src="https://images.unsplash.com/photo-1543508282-6319a3e2621f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=958&q=80" alt="shoe" 
-//         className="absolute inset-0 w-full h-full object-cover border border-black shadow-offset-lime" /> */}
-//         <img src={RetroShoe} alt="shoe" 
-//         className="absolute inset-0 w-full h-full object-cover border border-black shadow-offset-orange" />
-//       </div>
-
-//       <form className="flex-auto pl-6">
-//         <div className="flex flex-wrap items-baseline pl-52 -mt-6 -mr-6 py-6 pr-6 bg-black text-white">
-//           <h1 className="w-full flex-none text-2xl leading-7 mb-2 font-bold">Retro Shoe</h1>
-//           <div className="text-2xl leading-7 font-bold">$89.00</div>
-//           <div className="text-sm font-medium ml-3">In stock</div>
-//         </div>
-//         <div className="felx items-baseline py-6">
-//         <label>
-//           <input type="radio" name="size" value="xs" checked />
-//           XS
-//         </label>
-//         </div>
-//       </form>
-
-//     </div>
-//   )
-// }
-
-
 const Step2Form = props => {
   const [selectedSize, setSelectedSize] = useState('m');
   const sizes = [
@@ -136,7 +112,7 @@ const Step2Form = props => {
     { name: 'XL', value: 'xl' },
   ];
 
-  const Button = ({children, ...restProps}) => <button class="w-1/2 flex items-center justify-center focus:outline-none bg-red-400 text-black border border-black box-border shadow-offset-black hover:shadow-offset-black-sm transition-shadow duration-150 uppercase font-semibold tracking-wider" type="submit" {...restProps}>{children}</button>
+  const Button = ({ children, ...restProps }) => <button class="w-1/2 flex items-center justify-center focus:outline-none bg-red-400 text-black border border-black box-border shadow-offset-black hover:shadow-offset-black-sm transition-shadow duration-150 uppercase font-semibold tracking-wider" type="submit" {...restProps}>{children}</button>
   return (
     <div className="relative">
       <div className="h-76 w-full absolute top-0 left-0 -m-4 bg-gradient-to-r from-red-200 to-red-400">
@@ -191,9 +167,9 @@ const Step2Form = props => {
       </div>
     </div>
   )
-  }
+}
 
 
 
 
-  export default Clubhouse;
+export default Clubhouse;

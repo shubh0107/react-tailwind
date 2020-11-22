@@ -1,7 +1,7 @@
 import './App.css';
 import { Header } from './components'
 import { Clubhouse, SampleCards, TodoApp } from './pages';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 const routesList = [
   { name: 'Sample Cards', route: '/sample-cards' },
@@ -11,18 +11,20 @@ const routesList = [
 function App() {
   return (
     <Router>
-      <Header routesList={routesList} />
-      <Switch>
-        <Route exact path="/" >
-          <Redirect to="/sample-cards" />
-        </Route>
-        <Route path="/sample-cards">
-          <SampleCards />
-        </Route>
-        <Route path="/clubhouse">
-          <Clubhouse />
-        </Route>
-      </Switch>
+      <div className="h-screen flex flex-col">
+        <Header routesList={routesList} />
+        <Switch>
+          <Route exact path="/" >
+            <Redirect to="/sample-cards" />
+          </Route>
+          <Route path="/sample-cards">
+            <SampleCards />
+          </Route>
+          <Route path="/clubhouse">
+            <Clubhouse />
+          </Route>
+        </Switch>
+      </div>
     </Router>
   )
 }

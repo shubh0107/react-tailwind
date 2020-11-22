@@ -4,7 +4,7 @@ const Header = ({ routesList }) => {
   const { pathname } = useLocation();
 
 
-  return <div className="p-4 flex items-center space-x-2 text-indigo-500 border-b border-gray-400">
+  return <div className="h-16 px-8 flex flex-none items-center space-x-2 text-indigo-500 border-b border-gray-400">
     {routesList.map(item => {
       return <HeaderLink data={item} key={item.route} activeLink={pathname} />
     })}
