@@ -3,3 +3,15 @@
 @tailwind components;
 
 @tailwind utilities;
+
+
+
+
+input[type="radio"] {
+  visibility: hidden;
+}
+
+
+input[type="radio"]:checked + span {
+  border-bottom: 2px solid #fc8181;
+}
