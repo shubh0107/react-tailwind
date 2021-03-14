@@ -56,6 +56,7 @@ const Clubhouse = props => {
         <div className="flex justify-center mt-48">
           {currentStep === 1 ? <Step1Form /> : ''}
           {currentStep === 2 ? <RetroShoe /> : ''}
+          {currentStep === 3 ? <Spotify /> : ''}
         </div>
       </div>
     </div>
@@ -100,6 +101,18 @@ const Step1Form = props => {
     </div>
   )
 }
+
+
+const Spotify = props => (
+  <iframe
+    src="https://open.spotify.com/embed/playlist/37i9dQZF1EM9q0veY2d9LM"
+    width="600"
+    height="380"
+    frameborder="0"
+    allowtransparency="true"
+    allow="encrypted-media">
+  </iframe>
+)
 
 
 

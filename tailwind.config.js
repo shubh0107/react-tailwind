@@ -24,6 +24,7 @@ module.exports = {
   variants: {
     extend: {
       // boxShadow: ['hover']
+      // scale: ['group-hover']
     }
   },
   plugins: [],

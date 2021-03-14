@@ -1,11 +1,12 @@
 import './App.css';
 import { Header } from './components'
-import { Clubhouse, SampleCards, TodoApp } from './pages';
+import { Clubhouse, Framer, SampleCards, TodoApp } from './pages';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 const routesList = [
   { name: 'Sample Cards', path: '/sample-cards', component: SampleCards },
-  { name: 'Clubhouse', path: '/clubhouse', component: Clubhouse }
+  { name: 'Clubhouse', path: '/clubhouse', component: Clubhouse },
+  { name: 'Framer', path: '/framer', component: Framer }
 ];
 
 function App() {
