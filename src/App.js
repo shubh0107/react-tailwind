@@ -1,6 +1,6 @@
 import './App.css';
 import { Header } from './components'
-import { Clubhouse, Framer, SampleCards, TodoApp } from './pages';
+import { Clubhouse, Framer, SampleCards } from './pages';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 const routesList = [
