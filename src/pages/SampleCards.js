@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FeaturesMenu, Card, RetroShoe } from '../components/sample-cards';
+import Users from '../components/users';
 
 const items = [
   {
@@ -52,16 +53,21 @@ const SampleCards = props => {
     <div className="h-full w-full flex flex-col bg-gray-100 p-4">
       <h1 className="text-xl bold mb-6">Trying out Tailwind CSS</h1>
       {/* <div className="grid lg:grid-cols-2 md:grid-cols-1 mb-4"> */}
-      <div className="w-full flex">
-        <div className="flex flex-col w-1/2">
+      <div className="grid grid-cols-2">
+        <div className="flex flex-col">
           <div className="grid gap-3 mb-4">
             {items.map((item, i) => <Card key={item.title} data={item} selectedOption={selectedOption} itemIndex={i} clickHandler={clickHandler} />)}
           </div>
           <FeaturesMenu data={menuData} />
         </div>
-        <div className="flex w-1/2">
-          <RetroShoe />
+        <div className="flex">
+          <div className="grid gap-y-12">
+            <RetroShoe />
+            <Users />
+          </div>
         </div>
+        {/* <div>
+        </div> */}
       </div>
     </div>
   );
